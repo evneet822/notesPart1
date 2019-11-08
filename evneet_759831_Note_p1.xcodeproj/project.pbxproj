@@ -13,6 +13,8 @@
 		9BC3E0562374C03B00E963A9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9BC3E0542374C03B00E963A9 /* Main.storyboard */; };
 		9BC3E0582374C03C00E963A9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9BC3E0572374C03C00E963A9 /* Assets.xcassets */; };
 		9BC3E05B2374C03C00E963A9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9BC3E0592374C03C00E963A9 /* LaunchScreen.storyboard */; };
+		9BC3E0632374C09600E963A9 /* folderTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BC3E0622374C09600E963A9 /* folderTableViewController.swift */; };
+		9BC3E0662374CB0600E963A9 /* folder-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 9BC3E0652374CB0600E963A9 /* folder-icon.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +26,8 @@
 		9BC3E0572374C03C00E963A9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		9BC3E05A2374C03C00E963A9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		9BC3E05C2374C03C00E963A9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		9BC3E0622374C09600E963A9 /* folderTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = folderTableViewController.swift; sourceTree = "<group>"; };
+		9BC3E0652374CB0600E963A9 /* folder-icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "folder-icon.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,6 +60,7 @@
 		9BC3E04D2374C03B00E963A9 /* evneet_759831_Note_p1 */ = {
 			isa = PBXGroup;
 			children = (
+				9BC3E0642374CAE700E963A9 /* image */,
 				9BC3E04E2374C03B00E963A9 /* AppDelegate.swift */,
 				9BC3E0502374C03B00E963A9 /* SceneDelegate.swift */,
 				9BC3E0522374C03B00E963A9 /* ViewController.swift */,
@@ -63,8 +68,17 @@
 				9BC3E0572374C03C00E963A9 /* Assets.xcassets */,
 				9BC3E0592374C03C00E963A9 /* LaunchScreen.storyboard */,
 				9BC3E05C2374C03C00E963A9 /* Info.plist */,
+				9BC3E0622374C09600E963A9 /* folderTableViewController.swift */,
 			);
 			path = evneet_759831_Note_p1;
+			sourceTree = "<group>";
+		};
+		9BC3E0642374CAE700E963A9 /* image */ = {
+			isa = PBXGroup;
+			children = (
+				9BC3E0652374CB0600E963A9 /* folder-icon.png */,
+			);
+			path = image;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -125,6 +139,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9BC3E0662374CB0600E963A9 /* folder-icon.png in Resources */,
 				9BC3E05B2374C03C00E963A9 /* LaunchScreen.storyboard in Resources */,
 				9BC3E0582374C03C00E963A9 /* Assets.xcassets in Resources */,
 				9BC3E0562374C03B00E963A9 /* Main.storyboard in Resources */,
@@ -139,6 +154,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				9BC3E0532374C03B00E963A9 /* ViewController.swift in Sources */,
+				9BC3E0632374C09600E963A9 /* folderTableViewController.swift in Sources */,
 				9BC3E04F2374C03B00E963A9 /* AppDelegate.swift in Sources */,
 				9BC3E0512374C03B00E963A9 /* SceneDelegate.swift in Sources */,
 			);
