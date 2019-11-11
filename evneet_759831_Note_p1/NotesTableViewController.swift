@@ -104,7 +104,7 @@ class NotesTableViewController: UITableViewController {
             if let tableViewCell = sender as? UITableViewCell{
                 if let index = tableView.indexPath(for: tableViewCell)?.row{
                     detail.textString = notes![index]
-//                    curTndex = index
+                    curTndex = index
                 }
             }
         }
@@ -114,16 +114,19 @@ class NotesTableViewController: UITableViewController {
     
     func updateText(text : String){
         
-//        guard  curTndex != -1 else {
-//            return
-//        }
-//        notes![curTndex] = text
-//
-//        let indexPath = IndexPath(item: curTndex, section: 0)
-//        tableView.reloadRows(at: [indexPath], with: .middle)
-//
-        notes?.append(text)
-        notestable.reloadData()
+        guard notes != nil && curTndex != -1 else {
+            notes?.append(text)
+            notestable.reloadData()
+            return
+        }
+        
+        
+        notes![curTndex] = text
+
+        let indexPath = IndexPath(item: curTndex, section: 0)
+        tableView.reloadRows(at: [indexPath], with: .middle)
+        curTndex = -1
+        
     }
     
 
