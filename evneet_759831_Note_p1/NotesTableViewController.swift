@@ -10,10 +10,10 @@ import UIKit
 
 class NotesTableViewController: UITableViewController {
     
-    
-    var notes : [String]?
+    var currentIndex = -1
+//    var notes : [String]?
     @IBOutlet var notestable: UITableView!
-    var curTndex = -1
+  var folderDelegate: folderTableViewController?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -22,9 +22,9 @@ class NotesTableViewController: UITableViewController {
         // self.clearsSelectionOnViewWillAppear = false
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        self.navigationItem.rightBarButtonItem = self.editButtonItem
+//        self.navigationItem.rightBarButtonItem = self.editButtonItem
         self.navigationController?.navigationBar.prefersLargeTitles = true
-        notes = []
+//        notes = []
     }
 
     // MARK: - Table view data source
@@ -36,16 +36,21 @@ class NotesTableViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return notes?.count ?? 0
+        return  FolderStructure.folderData[(folderDelegate?.curIndx)!].notes.count
+//        return notes?.count ?? 0
     }
 
+        
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        let note = notes?[indexPath.row]
+//        let note = notes?[indexPath.row]
+       
+        let note1 = FolderStructure.folderData[(folderDelegate?.curIndx)!].notes[indexPath.row]
+       
         if let cell = tableView.dequeueReusableCell(withIdentifier: "notesCell"){
              
-            cell.textLabel?.text = note
+            cell.textLabel?.text = note1
             return cell
         }
 
@@ -94,40 +99,50 @@ class NotesTableViewController: UITableViewController {
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
+   
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-        
-        if let detail = segue.destination as? ViewController{
-            detail.notesTable = self
+            // Get the new view controller using segue.destination.
+            // Pass the selected object to the new view controller.
             
-            if let tableViewCell = sender as? UITableViewCell{
-                if let index = tableView.indexPath(for: tableViewCell)?.row{
-                    detail.textString = notes![index]
-                    curTndex = index
+            if let detail = segue.destination as? ViewController{
+                
+                detail.notesTable = self
+                
+                if let tableViewCell = sender as? UITableViewCell{
+                    if let index = tableView.indexPath(for: tableViewCell)?.row{
+
+                        detail.textString = FolderStructure.folderData[(folderDelegate?.curIndx)!].notes[index]
+                        currentIndex = index
+                    }
                 }
             }
+            
+            
         }
-        
-        
-    }
     
     func updateText(text : String){
-        
-        guard notes != nil && curTndex != -1 else {
-            notes?.append(text)
-            notestable.reloadData()
-            return
-        }
-        
-        
-        notes![curTndex] = text
-
-        let indexPath = IndexPath(item: curTndex, section: 0)
-        tableView.reloadRows(at: [indexPath], with: .middle)
-        curTndex = -1
-        
-    }
+           
+            
+            
+//           FolderStructure.folderData[(folderDelegate?.curIndx)!].notes.append(text)
+//
+//           tableView.reloadData()
+//        folderDelegate?.reload()
+            
+            guard FolderStructure.folderData[(folderDelegate?.curIndx)!].notes != [] && currentIndex != -1 else {
+                FolderStructure.folderData[(folderDelegate?.curIndx)!].notes.append(text)
+                tableView.reloadData()
+                folderDelegate?.reload()
+                return
+            }
     
+    
+            FolderStructure.folderData[(folderDelegate?.curIndx)!].notes[currentIndex] = text
+    
+            let indexPath = IndexPath(item: currentIndex, section: 0)
+            tableView.reloadRows(at: [indexPath], with: .middle)
+            currentIndex = -1
+    
+      }
 
 }

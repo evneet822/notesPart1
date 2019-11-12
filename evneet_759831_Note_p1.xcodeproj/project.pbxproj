@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9B9D544B237B2CE000C93963 /* folderStruct.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B9D544A237B2CE000C93963 /* folderStruct.swift */; };
 		9B9EC71E2379DBA200EA7D0D /* NotesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B9EC71D2379DBA200EA7D0D /* NotesTableViewController.swift */; };
 		9BC3E04F2374C03B00E963A9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BC3E04E2374C03B00E963A9 /* AppDelegate.swift */; };
 		9BC3E0512374C03B00E963A9 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BC3E0502374C03B00E963A9 /* SceneDelegate.swift */; };
@@ -19,6 +20,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		9B9D544A237B2CE000C93963 /* folderStruct.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = folderStruct.swift; sourceTree = "<group>"; };
 		9B9EC71D2379DBA200EA7D0D /* NotesTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotesTableViewController.swift; sourceTree = "<group>"; };
 		9BC3E04B2374C03B00E963A9 /* evneet_759831_Note_p1.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = evneet_759831_Note_p1.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9BC3E04E2374C03B00E963A9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -64,14 +66,15 @@
 			children = (
 				9BC3E0642374CAE700E963A9 /* image */,
 				9BC3E04E2374C03B00E963A9 /* AppDelegate.swift */,
-				9BC3E0502374C03B00E963A9 /* SceneDelegate.swift */,
 				9BC3E0522374C03B00E963A9 /* ViewController.swift */,
 				9BC3E0542374C03B00E963A9 /* Main.storyboard */,
+				9B9EC71D2379DBA200EA7D0D /* NotesTableViewController.swift */,
+				9BC3E0622374C09600E963A9 /* folderTableViewController.swift */,
+				9B9D544A237B2CE000C93963 /* folderStruct.swift */,
+				9BC3E0502374C03B00E963A9 /* SceneDelegate.swift */,
 				9BC3E0572374C03C00E963A9 /* Assets.xcassets */,
 				9BC3E0592374C03C00E963A9 /* LaunchScreen.storyboard */,
 				9BC3E05C2374C03C00E963A9 /* Info.plist */,
-				9BC3E0622374C09600E963A9 /* folderTableViewController.swift */,
-				9B9EC71D2379DBA200EA7D0D /* NotesTableViewController.swift */,
 			);
 			path = evneet_759831_Note_p1;
 			sourceTree = "<group>";
@@ -158,6 +161,7 @@
 			files = (
 				9BC3E0532374C03B00E963A9 /* ViewController.swift in Sources */,
 				9BC3E0632374C09600E963A9 /* folderTableViewController.swift in Sources */,
+				9B9D544B237B2CE000C93963 /* folderStruct.swift in Sources */,
 				9BC3E04F2374C03B00E963A9 /* AppDelegate.swift in Sources */,
 				9BC3E0512374C03B00E963A9 /* SceneDelegate.swift in Sources */,
 				9B9EC71E2379DBA200EA7D0D /* NotesTableViewController.swift in Sources */,
