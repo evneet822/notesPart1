@@ -104,8 +104,18 @@
                         </connections>
                     </tableView>
                     <toolbarItems>
-                        <barButtonItem title="delete" image="trash" catalog="system" id="lm2-5r-Myy"/>
-                        <barButtonItem title="move" image="square.and.arrow.up" catalog="system" id="fKU-X5-56S"/>
+                        <barButtonItem title="delete" image="trash" catalog="system" id="lm2-5r-Myy">
+                            <connections>
+                                <action selector="deleteAction:" destination="RAd-dc-QMo" id="CrC-e8-LFD"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem title="move" image="square.and.arrow.up" catalog="system" id="fKU-X5-56S">
+                            <connections>
+                                <segue destination="Knm-0g-UcO" kind="popoverPresentation" popoverAnchorBarButtonItem="fKU-X5-56S" id="X5k-Uy-hhd">
+                                    <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
+                                </segue>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem style="plain" systemItem="flexibleSpace" id="bCu-6j-eZS"/>
                         <barButtonItem title="Item" image="pencil.and.ellipsis.rectangle" catalog="system" id="GAT-K5-2x7">
                             <connections>
@@ -114,16 +124,56 @@
                         </barButtonItem>
                     </toolbarItems>
                     <navigationItem key="navigationItem" title="Notes" id="6E5-a4-jFX">
-                        <barButtonItem key="rightBarButtonItem" title="edit" image="ellipsis" catalog="system" id="c4A-mW-1QM"/>
+                        <barButtonItem key="rightBarButtonItem" title="edit" image="ellipsis" catalog="system" id="c4A-mW-1QM">
+                            <connections>
+                                <action selector="edit:" destination="RAd-dc-QMo" id="9fz-0g-hsf"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
+                        <outlet property="deleteButton" destination="lm2-5r-Myy" id="UrC-ak-cI9"/>
+                        <outlet property="editButton" destination="c4A-mW-1QM" id="KxK-vp-K0e"/>
+                        <outlet property="moveButton" destination="fKU-X5-56S" id="BG0-PP-7iX"/>
                         <outlet property="notestable" destination="eLI-eh-zxX" id="iEH-NT-QOc"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jHc-2R-alO" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1952.8" y="154.27286356821591"/>
+        </scene>
+        <!--Move View Controller-->
+        <scene sceneID="EoR-ya-gGy">
+            <objects>
+                <viewController id="Knm-0g-UcO" customClass="MoveViewController" customModule="evneet_759831_Note_p1" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="u9w-DW-NbW">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Move to folder" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CLg-Es-fgZ">
+                                <rect key="frame" x="16" y="8" width="343" height="53"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="45"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="slX-JC-8mZ">
+                                <rect key="frame" x="8" y="69" width="359" height="585"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="Knm-0g-UcO" id="OAQ-ix-YKM"/>
+                                    <outlet property="delegate" destination="Knm-0g-UcO" id="9An-BE-8OB"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <viewLayoutGuide key="safeArea" id="ULG-Nq-oN9"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="OJ6-Lb-cFJ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1953" y="908"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="fGA-bp-3ZB">

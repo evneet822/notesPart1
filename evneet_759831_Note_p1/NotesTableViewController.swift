@@ -10,10 +10,15 @@ import UIKit
 
 class NotesTableViewController: UITableViewController {
     
-    var currentIndex = -1
-//    var notes : [String]?
+    @IBOutlet var editButton: UIBarButtonItem!
+    @IBOutlet var moveButton: UIBarButtonItem!
+    @IBOutlet var deleteButton: UIBarButtonItem!
     @IBOutlet var notestable: UITableView!
-  var folderDelegate: folderTableViewController?
+    
+    var currentIndex = -1
+    var folderDelegate: folderTableViewController?
+    var isVisible = false
+   
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,7 +29,10 @@ class NotesTableViewController: UITableViewController {
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
 //        self.navigationItem.rightBarButtonItem = self.editButtonItem
         self.navigationController?.navigationBar.prefersLargeTitles = true
-//        notes = []
+        moveButton.isEnabled = false
+        deleteButton.isEnabled = false
+        tableView.allowsMultipleSelection = true
+
     }
 
     // MARK: - Table view data source
@@ -57,6 +65,20 @@ class NotesTableViewController: UITableViewController {
         // Configure the cell...
 
         return UITableViewCell()
+    }
+    
+
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        tableView.cellForRow(at: indexPath)?.accessoryType = .checkmark
+        
+        
+       
+    }
+    
+    override func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
+        tableView.cellForRow(at: indexPath)?.accessoryType = .detailButton
     }
     
 
@@ -123,12 +145,7 @@ class NotesTableViewController: UITableViewController {
     func updateText(text : String){
            
             
-            
-//           FolderStructure.folderData[(folderDelegate?.curIndx)!].notes.append(text)
-//
-//           tableView.reloadData()
-//        folderDelegate?.reload()
-            
+                      
             guard FolderStructure.folderData[(folderDelegate?.curIndx)!].notes != [] && currentIndex != -1 else {
                 FolderStructure.folderData[(folderDelegate?.curIndx)!].notes.append(text)
                 tableView.reloadData()
@@ -144,5 +161,60 @@ class NotesTableViewController: UITableViewController {
             currentIndex = -1
     
       }
-
+    
+    
+    
+    @IBAction func edit(_ sender: UIBarButtonItem) {
+        
+        if isVisible{
+            moveButton.isEnabled = false
+            deleteButton.isEnabled = false
+        }else{
+        
+        moveButton.isEnabled = true
+        deleteButton.isEnabled = true
+        }
+    }
+    
+    
+    
+    @IBAction func deleteAction(_ sender: UIBarButtonItem) {
+        
+        let alert = UIAlertController(title: "Delete", message: "Are you sure", preferredStyle: .alert)
+        let cancel = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+        alert.addAction(cancel)
+        alert.addAction(UIAlertAction(title: "Delete", style: .default, handler: { (action) in
+            self.deleteRows()
+        }))
+        self.present(alert, animated: true, completion: nil)
+        
+        
+    }
+    
+    func deleteRows(){
+        
+        if let selectedRows = tableView.indexPathsForSelectedRows{
+            var items = [String]()
+            
+            for indexpath in selectedRows{
+                items.append(FolderStructure.folderData[(folderDelegate?.curIndx)!].notes[indexpath.row])
+            }
+            
+            for item in items{
+                if let indexx = FolderStructure.folderData[(folderDelegate?.curIndx)!].notes.firstIndex(of: item){
+                    FolderStructure.folderData[(folderDelegate?.curIndx)!].notes.remove(at: indexx)
+                    
+                }
+                
+            }
+            
+            tableView.beginUpdates()
+            tableView.deleteRows(at: selectedRows, with: .automatic)
+            tableView.endUpdates()
+            
+            
+        }
+        
+    }
+    
 }

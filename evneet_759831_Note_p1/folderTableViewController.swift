@@ -166,9 +166,31 @@ class folderTableViewController: UITableViewController {
                    
                    let name = alercontroller.textFields?.first?.text
                 let f = FolderStructure(folderName: name!, notes: [])
-                FolderStructure.folderData.append(f)
-//                   self.folders?.append(name!)
-                self.tableView.reloadData()
+               // FolderStructure.folderData.append(f)
+//                self.tableView.reloadData()
+               var isExist = false
+                
+                for item in FolderStructure.folderData{
+                    let name = f.folderName
+                    if name == item.folderName{
+                        isExist = true
+                        break
+                    }
+                }
+                    if isExist{
+                        let alert = UIAlertController(title: "Name Taken", message: "Please choose a different name", preferredStyle: .alert)
+                        let okaction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
+                        okaction.setValue(UIColor.brown, forKey: "titleTextColor")
+                        alert.addAction(okaction)
+                        self.present(alert, animated: true, completion: nil)
+                        alert.view.tintColor = UIColor.black
+                        
+                    }
+                    else{
+                        FolderStructure.folderData.append(f)
+                                       self.tableView.reloadData()
+                    }
+                
                 
                    
                }))
