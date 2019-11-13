@@ -12,6 +12,7 @@ class ViewController: UIViewController {
     
     
     
+    @IBOutlet var nav_item: UINavigationItem!
     @IBOutlet weak var textView: UITextView!
     var textString: String?
     weak var notesTable: NotesTableViewController?
@@ -23,6 +24,11 @@ class ViewController: UIViewController {
         
         
         textView.text = textString ?? ""
+        self.view.backgroundColor = UIColor.lightGray
+        textView.backgroundColor = UIColor.lightGray
+        textView.textColor = UIColor.white
+        nav_item.titleView?.backgroundColor = .lightGray
+        self.navigationItem.titleView?.backgroundColor = .lightGray
     }
     
     override func viewWillDisappear(_ animated: Bool) {

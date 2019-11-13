@@ -11,13 +11,20 @@ import UIKit
 class MoveViewController: UIViewController,UITableViewDelegate,UITableViewDataSource {
     
     
+    @IBOutlet var tableView: UITableView!
     var noteViewdelegate: NotesTableViewController?
+    @IBOutlet var cancelLabel: UIButton!
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        self.view.backgroundColor = UIColor.lightGray
+        self.tableView.backgroundColor = UIColor.lightGray
+        self.cancelLabel.tintColor = .white
+        
+        
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -28,6 +35,7 @@ class MoveViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
         
         
         let cell = UITableViewCell(style: .default, reuseIdentifier: "")
+        cell.backgroundColor = UIColor.lightGray
         cell.textLabel?.text = FolderStructure.folderData[indexPath.row].folderName
         
         return cell
@@ -37,8 +45,9 @@ class MoveViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
         
 //        del.method(indexPath.row)
         
-        let alert = UIAlertController(title: "Move to \(FolderStructure.folderData[indexPath.row].folderName)", message: "Are you sure", preferredStyle: .alert)
+        let alert = UIAlertController(title: "Move to \(FolderStructure.folderData[indexPath.row].folderName)", message: "Are you sure?", preferredStyle: .alert)
         let noAction = UIAlertAction(title: "No", style: .cancel, handler: nil)
+        noAction.setValue(UIColor.brown, forKey: "titleTextColor")
         alert.addAction(noAction)
         
         alert.addAction(UIAlertAction(title: "Move", style: .default, handler: { (action) in
@@ -47,6 +56,7 @@ class MoveViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
         }))
         
         self.present(alert, animated: true, completion: nil)
+         alert.view.tintColor = UIColor.black
         
 //        noteViewdelegate!.moveNotes(index: indexPath.row)
 //        self.presentingViewController?.dismiss(animated: true, completion: nil)

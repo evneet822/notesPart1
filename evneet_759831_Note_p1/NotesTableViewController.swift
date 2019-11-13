@@ -33,6 +33,8 @@ class NotesTableViewController: UITableViewController {
         moveButton.isEnabled = false
         deleteButton.isEnabled = false
         tableView.allowsMultipleSelection = true
+        self.view.backgroundColor = UIColor.lightGray
+        self.navigationItem.backBarButtonItem?.tintColor = .blue
 
     }
 
@@ -185,12 +187,14 @@ class NotesTableViewController: UITableViewController {
     
     @IBAction func deleteAction(_ sender: UIBarButtonItem) {
         
-        let alert = UIAlertController(title: "Delete", message: "Are you sure", preferredStyle: .alert)
+        let alert = UIAlertController(title: "Delete", message: "Are you sure?", preferredStyle: .alert)
         let cancel = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+        cancel.setValue(UIColor.orange, forKey: "titleTextColor")
         alert.addAction(cancel)
-        alert.addAction(UIAlertAction(title: "Delete", style: .default, handler: { (action) in
+        alert.addAction(UIAlertAction(title: "Delete", style: .destructive, handler: { (action) in
             self.deleteRows()
         }))
+        
         self.present(alert, animated: true, completion: nil)
         
         

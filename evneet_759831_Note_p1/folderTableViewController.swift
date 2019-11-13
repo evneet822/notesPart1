@@ -24,10 +24,10 @@ class folderTableViewController: UITableViewController {
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         self.navigationItem.rightBarButtonItem = self.editButtonItem
         self.navigationItem.rightBarButtonItem?.tintColor = .white
-//        folders = []
+        self.navigationItem.backBarButtonItem?.tintColor = .white
+   
         
         self.view.backgroundColor = UIColor.lightGray
-        
         self.navigationController?.navigationBar.prefersLargeTitles = true
     }
 
@@ -54,7 +54,7 @@ class folderTableViewController: UITableViewController {
         cell.textLabel?.text = FolderStructure.folderData[indexPath.row].folderName
         cell.imageView?.image = UIImage(named: "folder-icon")
         cell.detailTextLabel?.text = "\(FolderStructure.folderData[indexPath.row].notes.count)"
-
+            cell.detailTextLabel?.textColor = UIColor.white
 
 
         // Configure the cell...

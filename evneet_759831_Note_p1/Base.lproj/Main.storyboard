@@ -93,6 +93,8 @@
                                         </label>
                                     </subviews>
                                 </tableViewCellContentView>
+                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <connections>
                                     <segue destination="iHw-2r-uhY" kind="show" trigger="accessoryAction" id="3R8-Iy-nTj"/>
                                 </connections>
@@ -105,11 +107,13 @@
                     </tableView>
                     <toolbarItems>
                         <barButtonItem title="delete" image="trash" catalog="system" id="lm2-5r-Myy">
+                            <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <connections>
                                 <action selector="deleteAction:" destination="RAd-dc-QMo" id="CrC-e8-LFD"/>
                             </connections>
                         </barButtonItem>
                         <barButtonItem title="move" image="square.and.arrow.up" catalog="system" id="fKU-X5-56S">
+                            <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <connections>
                                 <segue destination="Knm-0g-UcO" kind="popoverPresentation" popoverAnchorBarButtonItem="fKU-X5-56S" id="X5k-Uy-hhd">
                                     <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
@@ -118,6 +122,7 @@
                         </barButtonItem>
                         <barButtonItem style="plain" systemItem="flexibleSpace" id="bCu-6j-eZS"/>
                         <barButtonItem title="Item" image="pencil.and.ellipsis.rectangle" catalog="system" id="GAT-K5-2x7">
+                            <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <connections>
                                 <segue destination="iHw-2r-uhY" kind="show" id="RUv-FR-mRA"/>
                             </connections>
@@ -125,6 +130,7 @@
                     </toolbarItems>
                     <navigationItem key="navigationItem" title="Notes" id="6E5-a4-jFX">
                         <barButtonItem key="rightBarButtonItem" title="edit" image="ellipsis" catalog="system" id="c4A-mW-1QM">
+                            <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <connections>
                                 <action selector="edit:" destination="RAd-dc-QMo" id="9fz-0g-hsf"/>
                             </connections>
@@ -178,6 +184,10 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <viewLayoutGuide key="safeArea" id="ULG-Nq-oN9"/>
                     </view>
+                    <connections>
+                        <outlet property="cancelLabel" destination="rW1-9o-ofd" id="xN1-QP-uFq"/>
+                        <outlet property="tableView" destination="slX-JC-8mZ" id="Fyu-jn-pYm"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="OJ6-Lb-cFJ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -192,7 +202,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="JNl-VU-kKn">
-                                <rect key="frame" x="16" y="50" width="343" height="225"/>
+                                <rect key="frame" x="0.0" y="50" width="375" height="562"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
@@ -201,17 +211,19 @@
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
                         </subviews>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="2QY-vg-KST"/>
                     </view>
                     <navigationItem key="navigationItem" id="WHC-Ti-Bf4"/>
                     <connections>
+                        <outlet property="nav_item" destination="WHC-Ti-Bf4" id="gps-Tr-4IS"/>
                         <outlet property="textView" destination="JNl-VU-kKn" id="cVX-RG-b94"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="klJ-He-kjd" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2745" y="155"/>
+            <point key="canvasLocation" x="2778" y="154"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="bJm-G4-VdI">
@@ -220,6 +232,8 @@
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="ZJR-lz-gWD">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="tintColor" systemColor="systemBlueColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </navigationBar>
                     <toolbar key="toolbar" opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="UGo-1Y-RLL">
                         <rect key="frame" x="0.0" y="623" width="375" height="44"/>
