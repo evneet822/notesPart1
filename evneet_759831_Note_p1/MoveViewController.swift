@@ -11,7 +11,9 @@ import UIKit
 class MoveViewController: UIViewController,UITableViewDelegate,UITableViewDataSource {
     
     
-
+    var noteViewdelegate: NotesTableViewController?
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -31,6 +33,28 @@ class MoveViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
         return cell
     }
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+//        del.method(indexPath.row)
+        
+        let alert = UIAlertController(title: "Move to \(FolderStructure.folderData[indexPath.row].folderName)", message: "Are you sure", preferredStyle: .alert)
+        let noAction = UIAlertAction(title: "No", style: .cancel, handler: nil)
+        alert.addAction(noAction)
+        
+        alert.addAction(UIAlertAction(title: "Move", style: .default, handler: { (action) in
+            self.noteViewdelegate!.moveNotes(index: indexPath.row)
+                   self.presentingViewController?.dismiss(animated: true, completion: nil)
+        }))
+        
+        self.present(alert, animated: true, completion: nil)
+        
+//        noteViewdelegate!.moveNotes(index: indexPath.row)
+//        self.presentingViewController?.dismiss(animated: true, completion: nil)
+    }
+    
+    
+    
+    
 
     /*
     // MARK: - Navigation
@@ -42,4 +66,10 @@ class MoveViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
     }
     */
 
+    
+    @IBAction func cancelAction(_ sender: UIButton) {
+        self.presentingViewController?.dismiss(animated: true, completion: nil)
+        
+    }
+    
 }

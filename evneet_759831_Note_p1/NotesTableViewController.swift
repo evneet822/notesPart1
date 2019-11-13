@@ -18,6 +18,7 @@ class NotesTableViewController: UITableViewController {
     var currentIndex = -1
     var folderDelegate: folderTableViewController?
     var isVisible = false
+    var selectedRows: [IndexPath]?
    
     
     override func viewDidLoad() {
@@ -138,6 +139,8 @@ class NotesTableViewController: UITableViewController {
                     }
                 }
             }
+        if let move = segue.destination as? MoveViewController{
+            move.noteViewdelegate = self}
             
             
         }
@@ -166,13 +169,15 @@ class NotesTableViewController: UITableViewController {
     
     @IBAction func edit(_ sender: UIBarButtonItem) {
         
-        if isVisible{
-            moveButton.isEnabled = false
-            deleteButton.isEnabled = false
+        if !isVisible{
+            moveButton.isEnabled = true
+            deleteButton.isEnabled = true
+            isVisible = true
         }else{
         
-        moveButton.isEnabled = true
-        deleteButton.isEnabled = true
+        moveButton.isEnabled = false
+        deleteButton.isEnabled = false
+            isVisible = false
         }
     }
     
@@ -190,13 +195,39 @@ class NotesTableViewController: UITableViewController {
         
         
     }
+//    func moveNotes(indexpath.row){
+//        // move [1,2,3]
+//        for i in selectedRows{
+//
+//            let notetomove = FolderStructure.folderData[(folderDelegate?.curIndx)!].notes[i.row]
+//            FolderStructure.folderData[indexpath.row].notes.append(notetomove)
+//
+//        }
+//
+//
+//        deleteRows()
+//
+//    }
+    
+    func moveNotes(index: Int){
+        selectedRows = tableView.indexPathsForSelectedRows!
+        for i in selectedRows!{
+            let noteToMove = FolderStructure.folderData[(folderDelegate?.curIndx)!].notes[i.row]
+            FolderStructure.folderData[index].notes.append(noteToMove)
+            
+        }
+        
+        deleteRows()
+        
+        
+    }
     
     func deleteRows(){
         
-        if let selectedRows = tableView.indexPathsForSelectedRows{
+         selectedRows = tableView.indexPathsForSelectedRows!
             var items = [String]()
             
-            for indexpath in selectedRows{
+            for indexpath in selectedRows!{
                 items.append(FolderStructure.folderData[(folderDelegate?.curIndx)!].notes[indexpath.row])
             }
             
@@ -209,12 +240,16 @@ class NotesTableViewController: UITableViewController {
             }
             
             tableView.beginUpdates()
-            tableView.deleteRows(at: selectedRows, with: .automatic)
+            tableView.deleteRows(at: selectedRows!, with: .automatic)
             tableView.endUpdates()
             
+        folderDelegate?.tableView.reloadData()
+        
             
         }
         
-    }
+    
+    
     
 }
+
